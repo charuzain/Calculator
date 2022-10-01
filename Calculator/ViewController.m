@@ -9,8 +9,8 @@
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *label;
-@property float currentValue;
-@property float value;
+//@property float currentValue;
+//@property float value;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *btn;
 
 @property BOOL isNewNumber;
@@ -27,8 +27,12 @@
     else{
         self.label.text = [ NSString stringWithFormat:@"%@%@" , self.label.text , sender.titleLabel.text];
         
-        
     }
+    
+}
+- (IBAction)clear:(UIButton *)sender {
+    self.label.text = [ NSString stringWithFormat:@"%d" , 0];
+       self.isNewNumber = YES;
     
 }
 
