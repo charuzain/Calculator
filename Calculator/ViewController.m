@@ -9,11 +9,11 @@
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *label;
-//@property float currentValue;
-//@property float value;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *btn;
-
 @property BOOL isNewNumber;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *operation;
+@property double result;
+@property double currentValue;
 
 @end
 
@@ -22,10 +22,12 @@
     if(self.isNewNumber){
         self.label.text = sender.titleLabel.text;
         self.isNewNumber = NO;
-       
+        self.currentValue = [sender.titleLabel.text doubleValue];
+
     }
     else{
         self.label.text = [ NSString stringWithFormat:@"%@%@" , self.label.text , sender.titleLabel.text];
+        self.currentValue = [sender.titleLabel.text doubleValue];
         
     }
     
@@ -33,13 +35,18 @@
 - (IBAction)clear:(UIButton *)sender {
     self.label.text = [ NSString stringWithFormat:@"%d" , 0];
        self.isNewNumber = YES;
+
+}
+    
+- (IBAction)operatorSelected:(UIButton *)sender {
+    
+ 
     
 }
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     self.isNewNumber = YES;
     
 }
